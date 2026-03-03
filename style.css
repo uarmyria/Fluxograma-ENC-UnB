@@ -1,80 +1,40 @@
 body {
     background-color: #0d1117;
     color: #c9d1d9;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    margin: 0;
+    font-family: sans-serif;
     padding: 20px;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-h1 { color: #58a6ff; margin-bottom: 5px; }
-header p { color: #8b949e; margin-top: 0; }
-
-.titulo-sessao {
-    margin: 20px 10px;
-    color: #f0f6fc;
-    font-size: 1.4rem;
-    border-left: 5px solid #238636;
-    padding-left: 15px;
-}
+header { text-align: center; margin-bottom: 20px; }
 
 #grade-container, #optativas-container {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     overflow-x: auto;
-    padding-bottom: 25px;
-    scrollbar-width: thin;
-    scrollbar-color: #30363d transparent;
-}
-
-/* Custom Scrollbar for Chrome/Edge/Safari */
-#grade-container::-webkit-scrollbar, #optativas-container::-webkit-scrollbar {
-    height: 8px;
-}
-#grade-container::-webkit-scrollbar-thumb, #optativas-container::-webkit-scrollbar-thumb {
-    background: #30363d;
-    border-radius: 10px;
+    padding-bottom: 15px;
 }
 
 .semestre {
-    min-width: 300px;
+    min-width: 250px;
     background-color: #161b22;
     border: 1px solid #30363d;
-    border-radius: 10px;
-    padding: 15px;
+    border-radius: 8px;
+    padding: 10px;
     flex-shrink: 0;
-}
-
-.semestre h2 {
-    color: #58a6ff;
-    font-size: 1rem;
-    text-align: center;
-    margin-top: 0;
-    border-bottom: 1px solid #30363d;
-    padding-bottom: 10px;
 }
 
 .materia {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 6px;
+    padding: 8px;
+    margin: 4px 0;
+    border-radius: 4px;
     font-size: 0.65rem;
-    font-weight: 700;
-    color: #121212;
-    transition: all 0.3s ease;
-    cursor: default;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    min-height: 40px;
+    font-weight: bold;
+    color: #000;
 }
 
-/* Cores das Matérias */
 .verde { background-color: #4ade80; }
 .vermelho { background-color: #f87171; }
 .amarelo { background-color: #facc15; }
@@ -82,30 +42,9 @@ header p { color: #8b949e; margin-top: 0; }
 .laranja { background-color: #fb923c; }
 .cinza { background-color: #94a3b8; }
 .roxo { background-color: #c084fc; }
+.branca { background-color: #ffffff; }
 
-/* Estados Interativos */
-.concluida {
-    opacity: 0.25 !important;
-    filter: grayscale(0.8);
-    text-decoration: line-through;
-    transform: scale(0.97);
-}
+.concluida { opacity: 0.2; text-decoration: line-through; filter: grayscale(1); }
+.materia:has(input:disabled) { opacity: 0.05; pointer-events: none; }
 
-.materia:has(input:disabled) {
-    opacity: 0.1;
-    filter: grayscale(1);
-    pointer-events: none;
-}
-
-input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-}
-
-.divisor {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #30363d, transparent);
-    margin: 40px 0;
-}
+.divisor { border: 0; height: 1px; background: #30363d; margin: 30px 0; }
