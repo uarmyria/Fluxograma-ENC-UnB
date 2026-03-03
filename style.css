@@ -1,61 +1,82 @@
+:root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --txt: #f8fafc;
+    --verde: #22c55e;
+    --azul: #3b82f6;
+    --vermelho: #ef4444;
+    --roxo: #a855f7;
+    --marrom: #b45309;
+    --cinza: #94a3b8;
+}
+
 body {
-    background-color: #0d1117;
-    color: #c9d1d9;
-    font-family: sans-serif;
+    background-color: var(--bg);
+    color: var(--txt);
+    font-family: 'Inter', system-ui, sans-serif;
+    margin: 0;
     padding: 20px;
 }
 
-header { text-align: center; margin-bottom: 20px; }
+header { text-align: center; margin-bottom: 40px; }
 
-#grade-container, #optativas-container {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    padding-bottom: 15px;
+#grade-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.semestre {
-    min-width: 250px;
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 8px;
-    padding: 10px;
-    flex-shrink: 0;
+.semestre, .semestre-opt {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
 }
 
-.materia {
+.semestre h2, .semestre-opt h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--azul);
+    border-bottom: 2px solid #334155;
+    padding-bottom: 10px;
+}
+
+.materia, .materia-opt {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px;
-    margin: 4px 0;
-    border-radius: 4px;
-    font-size: 0.65rem;
-    font-weight: bold;
-    color: #000;
+    background: #334155;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    border-left: 4px solid transparent;
 }
 
-.verde { background-color: #4ade80; }
-.vermelho { background-color: #f87171; }
-.amarelo { background-color: #facc15; }
-.azul { background-color: #60a5fa; }
-.laranja { background-color: #fb923c; }
-.cinza { background-color: #94a3b8; }
-.roxo { background-color: #c084fc; }
-.branca { background-color: #ffffff; }
+/* Cores por natureza */
+.verde { border-left-color: var(--verde); }
+.azul { border-left-color: var(--azul); }
+.vermelho { border-left-color: var(--vermelho); }
+.roxo { border-left-color: var(--roxo); }
+.marrom { border-left-color: var(--marrom); }
+.cinza { border-left-color: var(--cinza); }
 
-.concluida { opacity: 0.2; text-decoration: line-through; filter: grayscale(1); }
-.materia:has(input:disabled) { opacity: 0.05; pointer-events: none; }
+.concluida { background: #064e3b !important; opacity: 0.8; }
 
-
-#optativas-container .semestre {
+#optativas-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 10px;
-    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
 }
 
-.materia {
-    min-height: 45px;
-    border: 1px solid rgba(255,255,255,0.1);
+.titulo-secao {
+    text-align: center;
+    margin: 60px 0 30px;
+    font-size: 2rem;
+    color: var(--verde);
 }
+
+@media (max-width: 900px) { #grade-container { grid-template-columns: 1fr; } }
