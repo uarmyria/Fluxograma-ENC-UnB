@@ -1,45 +1,35 @@
-:root {
-    --bg: #0f172a;
-    --card: #1e293b;
-    --txt: #f8fafc;
-    --verde: #22c55e;
-    --azul: #3b82f6;
-    --vermelho: #ef4444;
-    --roxo: #a855f7;
-    --marrom: #b45309;
-    --cinza: #94a3b8;
-}
-
 body {
-    background-color: var(--bg);
-    color: var(--txt);
-    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
 }
 
-header { text-align: center; margin-bottom: 40px; }
+header { text-align: center; margin-bottom: 25px; }
 
-#grade-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+#grade-container, #optativas-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 40px;
 }
 
 .semestre, .semestre-opt {
-    background: var(--card);
-    padding: 20px;
+    min-width: 320px;
+    background-color: #161b22;
+    border: 1px solid #30363d;
     border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+    padding: 15px;
+    flex-shrink: 0;
 }
 
-.semestre h2, .semestre-opt h3 {
-    margin-top: 0;
+h2 {
+    color: #58a6ff;
     font-size: 1.2rem;
-    color: var(--azul);
-    border-bottom: 2px solid #334155;
+    text-align: center;
+    border-bottom: 2px solid #30363d;
+    margin-bottom: 15px;
     padding-bottom: 10px;
 }
 
@@ -47,36 +37,52 @@ header { text-align: center; margin-bottom: 40px; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #334155;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    border-left: 4px solid transparent;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #000;
+    transition: 0.4s;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 
-/* Cores por natureza */
-.verde { border-left-color: var(--verde); }
-.azul { border-left-color: var(--azul); }
-.vermelho { border-left-color: var(--vermelho); }
-.roxo { border-left-color: var(--roxo); }
-.marrom { border-left-color: var(--marrom); }
-.cinza { border-left-color: var(--cinza); }
+/* Legenda de Cores da UnB */
+.vermelho { background-color: #ff4d4d; }
+.laranja { background-color: #ff944d; }
+.amarelo { background-color: #ffdb4d; }
+.azul { background-color: #4da6ff; }
+.verde { background-color: #4dff88; }
+.cinza { background-color: #8c8c8c; }
+.roxo { background-color: #b366ff; }
+.branco { background-color: #ffffff; }
 
-.concluida { background: #064e3b !important; opacity: 0.8; }
-
-#optativas-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+/* Estados Visuais */
+.concluida {
+    opacity: 0.3 !important;
+    filter: grayscale(0.7);
+    text-decoration: line-through;
+    transform: scale(0.95);
 }
 
+/* Bloqueio de dependência via CSS moderno */
+.materia:has(input:disabled), .materia-opt:has(input:disabled) {
+    opacity: 0.15;
+    filter: grayscale(1);
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+/* Títulos das seções */
 .titulo-secao {
     text-align: center;
-    margin: 60px 0 30px;
-    font-size: 2rem;
-    color: var(--verde);
+    margin-top: 40px;
+    font-size: 1.5rem;
+    color: #4dff88;
 }
-
-@media (max-width: 900px) { #grade-container { grid-template-columns: 1fr; } }
