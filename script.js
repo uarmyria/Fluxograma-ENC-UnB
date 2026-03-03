@@ -42,21 +42,57 @@ const dependencias = {
     'ENC0030': ['ENC0028'],
     'ENC0031': ['FDD0282', 'ENC0016', 'ENC0015'],
 
-    // --- OPTATIVAS AJUSTADAS ---
+    const dependencias = {
+    // --- DEPENDÊNCIAS DAS OPTATIVAS ---
     'CDS0008': ['CDS0007'],
-    'CEL0019': ['IQD0125'],
-    'CEL0054': ['IQD0125'],
+    'CEL0019': ['IQD0051'],
+    'CEL0054': ['IQD0125'], // Uma das opções aceitas
     'ENC0003': ['ENC0269', 'SOL0042'],
     'ENC0011': ['ENC0166', 'ENC0275'],
+    'ENC0012': ['ENC0269'],
+    'ENC0014': ['ENC0037'],
+    'ENC0017': ['ENC0235'],
+    'ENC0018': ['ENC0269', 'IQD0125'],
+    'ENC0019': ['ENC0251', 'ENC0001'],
+    'ENC0020': ['ENC0251', 'ENC0001'],
+    'ENC0021': ['ENC0016'],
+    'ENC0022': ['ENC0166', 'ENC0016'],
+    'ENC0023': ['ENC0026', 'ENC0267'],
+    'ENC0032': ['ENC0016'],
+    'ENC0033': ['ENC0183'],
+    'ENC0050': ['ENC0235'],
     'ENC0051': ['ENC0251', 'ENC0252'],
-    'ENC0188': ['ENC0241', 'ENC0240'],
-    'ENC0169': ['ENC0251', 'ENC0252', 'ENC0166'],
+    'ENC0064': ['ENC0251', 'ENC0252'],
+    'ENC0162': ['ENC0251', 'ENC0166'],
+    'ENC0165': ['ENC0251', 'ENC0166'],
+    'ENC0169': ['ENC0251', 'ENC0166'],
+    'ENC0172': ['ENC0251', 'ENC0166'],
+    'ENC0182': ['ENC0251', 'ENC0252'],
+    'ENC0187': ['ENC0251', 'ENC0166'],
+    'ENC0188': ['ENC0240', 'ENC0241'],
+    'ENC0237': ['ENC0235'],
+    'ENC0238': ['ENC0240', 'ENC0241'],
+    'ENC0239': ['ENC0235'],
+    'ENC0245': ['ENC0251', 'ENC0166'],
+    'ENC0253': ['ECL0033'],
+    'ENC0261': ['ENC0263'],
+    'ENC0264': ['ENC0267'],
     'ENC0271': ['ENC0268'],
+    'ENC0279': ['ENC0037', 'ENC0235'],
+    'ENC0281': ['ENC0268'],
+    'ENC0282': ['ENC0166'],
     'ENE0002': ['MAT0027', 'MAT0031'],
+    'ENM0174': ['ENE0001'],
     'FAV0215': ['CEL0054'],
+    'FGA0107': ['IFD0171', 'IFD0173'],
+    'IQD0063': ['IQD0051'],
+    'IQD0118': ['IQD0125', 'EFL0010'],
+    'IQD0282': ['IQD0125'], 
+    'MAT0028': ['MAT0027'],
     'MAT0048': ['MAT0026']
 };
 
+// Funções de Processamento (Sistema Reativo)
 function verificarGrade() {
     let mudancaDetectada = false;
     const saveState = {};
@@ -88,12 +124,12 @@ function verificarGrade() {
         saveState[idAlvo] = input.checked;
     });
 
-    localStorage.setItem('unb_ambiental_data', JSON.stringify(saveState));
+    localStorage.setItem('fluxo_unb_data', JSON.stringify(saveState));
     if (mudancaDetectada) verificarGrade();
 }
 
 function carregarDados() {
-    const dados = JSON.parse(localStorage.getItem('unb_ambiental_data') || '{}');
+    const dados = JSON.parse(localStorage.getItem('fluxo_unb_data') || '{}');
     Object.keys(dados).forEach(id => {
         const div = document.getElementById(id);
         if (div) {
