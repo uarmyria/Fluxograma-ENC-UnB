@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxo Engenharia Ambiental - UnB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Engenharia Ambiental - UnB</h1>
+        <p>Matriz Curricular (SIGAA)</p>
+    </header>
+
+    <h2 class="titulo-sessao">Matriz Obrigatória</h2>
+    <main id="grade-container">
+        <div class="semestre">
+            <h2>1º Nível</h2>
+            <div class="materia verde" id="CEL0088">CEL0088 - BIOLOGIA GERAL - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0263">ENC0263 - INTRODUÇÃO À ENGENHARIA AMBIENTAL - 30h <input type="checkbox"></div>
+            <div class="materia vermelho" id="IFD0171">IFD0171 - FISICA 1 - 60h <input type="checkbox"></div>
+            <div class="materia amarelo" id="IFD0173">IFD0173 - FISICA 1 EXPERIMENTAL - 30h <input type="checkbox"></div>
+            <div class="materia azul" id="IGD0173">IGD0173 - GEOLOGIA BÁSICA - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="IQD0125">IQD0125 - QUIMICA GERAL TEORICA - 60h <input type="checkbox"></div>
+            <div class="materia vermelho" id="MAT0025">MAT0025 - CÁLCULO 1 - 90h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>2º Nível</h2>
+            <div class="materia verde" id="ECL0033">ECL0033 - ECOLOGIA 1 - 60h <input type="checkbox"></div>
+            <div class="materia laranja" id="ENC0053">ENC0053 - DESENHO TECNICO - 60h <input type="checkbox"></div>
+            <div class="materia vermelho" id="IFD0175">IFD0175 - FISICA 2 - 60h <input type="checkbox"></div>
+            <div class="materia amarelo" id="IFD0177">IFD0177 - FISICA 2 EXPERIMENTAL - 60h <input type="checkbox"></div>
+            <div class="materia vermelho" id="MAT0026">MAT0026 - CÁLCULO 2 - 90h <input type="checkbox"></div>
+            <div class="materia vermelho" id="MAT0031">MAT0031 - INTRODUCAO A ALGEBRA LINEAR - 60h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>3º Nível</h2>
+            <div class="materia laranja" id="ENC0035">ENC0035 - INTRODUÇÃO À MECÂNICA DOS SÓLIDOS - 60h <input type="checkbox"></div>
+            <div class="materia amarelo" id="ENC0240">ENC0240 - LABORATÓRIO DE GEOTECNIA 1 - 30h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0241">ENC0241 - GEOTECNIA 1 - 60h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0266">ENC0266 - CLIMATOLOGIA APLICADA - 60h <input type="checkbox"></div>
+            <div class="materia laranja" id="ENC0267">ENC0267 - CARTOGRAFIA E GEOPROCESSAMENTO APLICADO - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0268">ENC0268 - CIÊNCIA DOS MATERIAIS - 60h <input type="checkbox"></div>
+            <div class="materia vermelho" id="MAT0027">MAT0027 - CÁLCULO 3 - 90h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>4º Nível</h2>
+            <div class="materia vermelho" id="ENC0037">ENC0037 - TRANSFERÊNCIA DE ENERGIA E MASSA - 75h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0235">ENC0235 - GEOTECNIA 2 - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0269">ENC0269 - MICROBIOLOGIA AMBIENTAL - 30h <input type="checkbox"></div>
+            <div class="materia amarelo" id="ENC0270">ENC0270 - MICROBIOLOGIA AMBIENTAL E EXPERIMENTAL - 30h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0272">ENC0272 - ASPECTOS QUÍMICOS DE QUALIDADE DA ÁGUA - 30h <input type="checkbox"></div>
+            <div class="materia amarelo" id="ENC0273">ENC0273 - ASPECTOS QUÍMICOS DE QUALIDADE DE ÁGUA-EXPERIMENTAL - 30h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>5º Nível</h2>
+            <div class="materia azul" id="ENC0183">ENC0183 - GEOTECNIA AMBIENTAL - 60h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0251">ENC0251 - HIDRAULICA - TEORIA - 60h <input type="checkbox"></div>
+            <div class="materia amarelo" id="ENC0252">ENC0252 - HIDRAULICA EXPERIMENTAL - 30h <input type="checkbox"></div>
+            <div class="materia vermelho" id="ENC0274">ENC0274 - ESTATÍSTICA APLICADA À ENGENHARIA AMBIENTAL - 60h <input type="checkbox"></div>
+            <div class="materia vermelho" id="ENC0275">ENC0275 - MÉTODOS COMPUTACIONAIS EM ENGENHARIA AMBIENTAL - 90h <input type="checkbox"></div>
+            <div class="materia cinza" id="SOL0042">SOL0042 - INTRODUÇÃO À SOCIOLOGIA - 60h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>6º Nível</h2>
+            <div class="materia verde" id="ENC0001">ENC0001 - CINÉTICA, PROCESSOS E OPERAÇÕES UNITÁRIAS - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="ENC0002">ENC0002 - ASPECTOS ECONÔMICOS DA ENGENHARIA AMBIENTAL - 30h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0166">ENC0166 - HIDROLOGIA APLICADA - 60h <input type="checkbox"></div>
+            <div class="materia vermelho" id="ENE0001">ENE0001 - ELETRICIDADE BÁSICA - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="EPR0068">EPR0068 - ORGANIZAÇÃO INDUSTRIAL - 60h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>7º Nível</h2>
+            <div class="materia verde" id="ENC0004">ENC0004 - SANEAMENTO, MEIO AMBIENTE E PLANEJAMENTO URBANO - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0007">ENC0007 - TRATAMENTO DE ÁGUAS RESIDUÁRIAS URBANAS - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0010">ENC0010 - TRATAMENTO DE ÁGUA PARA CONSUMO HUMANO - 60h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0052">ENC0052 - RESÍDUOS SÓLIDOS URBANOS - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="EPR0059">EPR0059 - HIGIENE E SEGURANÇA DO TRABALHO - 30h <input type="checkbox"></div>
+            <div class="materia cinza" id="FDD0282">FDD0282 - FUNDAMENTOS DO DIREITO AMBIENTAL - 60h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>8º Nível</h2>
+            <div class="materia verde" id="ENC0013">ENC0013 - INTRODUÇÃO À ANÁLISE DE SISTEMAS AMBIENTAIS - 30h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0015">ENC0015 - AVALIAÇÃO E CONTROLE DE POLUIÇÃO DA ÁGUA - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0016">ENC0016 - AVALIAÇÃO E CONTROLE DE POLUIÇÃO DO SOLO - 60h <input type="checkbox"></div>
+            <div class="materia roxo" id="ENC0025">ENC0025 - ESTÁGIO CURRICULAR EM ENGENHARIA AMBIENTAL - 30h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>9º Nível</h2>
+            <div class="materia verde" id="ENC0026">ENC0026 - AVALIAÇÃO DE IMPACTOS E RISCOS AMBIENTAIS - 60h <input type="checkbox"></div>
+            <div class="materia roxo" id="ENC0028">ENC0028 - PROJETO FINAL EM ENGENHARIA AMBIENTAL 1 - 15h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>10º Nível</h2>
+            <div class="materia roxo" id="ENC0030">ENC0030 - PROJETO FINAL EM ENGENHARIA AMBIENTAL 2 - 30h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0031">ENC0031 - PLANEJAMENTO E GESTÃO AMBIENTAL - 60h <input type="checkbox"></div>
+        </div>
+    </main>
+
+    <hr class="divisor">
+    
+    <h2 class="titulo-sessao">Disciplinas Optativas</h2>
+    <section id="optativas-container">
+        <div class="semestre">
+            <h2>Humanas e Gestão</h2>
+            <div class="materia verde" id="CDS0007">CDS0007 - INTRODUÇÃO AO DESENVOLVIMENTO SUSTENTÁVEL - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="CDS0008">CDS0008 - MEIO AMBIENTE, CULTURA E SOCIEDADE - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="CET0039">CET0039 - SUSTENTABILIDADE ÉTICA E TURISMO - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="GEA0068">GEA0068 - POLITICA PUBLICA E MEIO AMBIENTE - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="ENC0261">ENC0261 - GESTÃO DE PROJETOS E EQUIPES MULTIDISCIPLINARES - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="ECL0036">ECL0036 - EDUCAÇÃO AMBIENTAL - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="FTD0007">FTD0007 - INTRODUCAO A ATIVIDADE EMPRESARIAL - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="LIP0096">LIP0096 - LEITURA E PRODUÇÃO DE TEXTOS - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="LIP0174">LIP0174 - LÍNGUA DE SINAIS BRASILEIRA - BÁSICO - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="TAU0013">TAU0013 - PLANEJAMENTO URBANO - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="ENC0208">ENC0208 - DESENVOLVIMENTO URBANO - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="ENC0034">ENC0034 - INTRODUÇÃO Á ENGENHARIA TERRITORIAL - 60h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>Ciências e Tecnologias</h2>
+            <div class="materia verde" id="ECL0030">ECL0030 - FUNDAMENTOS DE ECOLOGIA E EVOLUÇÃO - 60h <input type="checkbox"></div>
+            <div class="materia vermelho" id="CIC0007">CIC0007 - INTRODUÇÃO À CIÊNCIA DA COMPUTAÇÃO - 60h <input type="checkbox"></div>
+            <div class="materia vermelho" id="MAT0048">MAT0048 - EQUACOES DIFERENCIAIS 1 - 60h <input type="checkbox"></div>
+            <div class="materia vermelho" id="MAT0028">MAT0028 - VARIAVEL COMPLEXA 1 - 90h <input type="checkbox"></div>
+            <div class="materia verde" id="CEL0019">CEL0019 - BIOQUIMICA E BIOFISICA - 135h <input type="checkbox"></div>
+            <div class="materia verde" id="CEL0054">CEL0054 - BIOQUIMICA FUNDAMENTAL - 90h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0018">ENC0018 - BIOQUÍMICA APLICADA AOS PROCESSOS DA ENGENHARIA AMBIENTAL - 30h <input type="checkbox"></div>
+            <div class="materia verde" id="IQD0118">IQD0118 - QUIMICA ANALITICA QUALITATIVA - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="IQD0063">IQD0063 - QUIMICA ANALITICA 1 - 60h <input type="checkbox"></div>
+            <div class="materia verde" id="IQD0051">IQD0051 - QUÍMICA GERAL - 90h <input type="checkbox"></div>
+            <div class="materia amarelo" id="ENE0002">ENE0002 - LABORATÓRIO DE ELETRICIDADE BÁSICA - 30h <input type="checkbox"></div>
+            <div class="materia verde" id="ENC0281">ENC0281 - ANÁLISE DE CICLO DE VIDA - 30h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>Hídrica e Saneamento</h2>
+            <div class="materia azul" id="ENC0051">ENC0051 - SISTEMAS DE ESGOTO SANITÁRIO - 60h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0187">ENC0187 - SISTEMA DE ABASTECIMENTO DE AGUA - 60h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0180">ENC0180 - SISTEMAS DE DRENAGEM URBANA - 60h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0169">ENC0169 - SISTEMAS HIDRAULICOS DE SANEAMENTO - 60h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0019">ENC0019 - TRATAMENTO AVANÇADO DE ÁGUAS PARA CONSUMO HUMANO - 30h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0020">ENC0020 - TRATAMENTO AVANÇADO DE ÁGUAS RESIDUÁRIAS - 30h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0282">ENC0282 - PLANEJAMENTO E GESTÃO DE SISTEMAS HÍDRICOS - 30h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0172">ENC0172 - AGUAS SUBTERRANEAS - 30h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0245">ENC0245 - METODOS NUMERICOS EM HIDROLOGIA - 60h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0012">ENC0012 - ESTUDOS DOS ECOSSISTEMAS AQUÁTICOS CONTINENTAIS - 30h <input type="checkbox"></div>
+            <div class="materia azul" id="ENC0022">ENC0022 - MODELOS DE POLUIÇÃO DIFUSA EM SISTEMAS HÍDRICOS - 30h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>Geotecnia e Energia</h2>
+            <div class="materia laranja" id="ENC0188">ENC0188 - INVESTIGACOES GEOTECNICAS - 60h <input type="checkbox"></div>
+            <div class="materia laranja" id="ENC0238">ENC0238 - LABORATÓRIO DE GEOTECNIA 2 - 30h <input type="checkbox"></div>
+            <div class="materia laranja" id="ENC0050">ENC0050 - GEOSSINTÉTICOS EM ENGENHARIA AMBIENTAL - 30h <input type="checkbox"></div>
+            <div class="materia laranja" id="ENC0017">ENC0017 - SOLOS TROPICAIS - 60h <input type="checkbox"></div>
+            <div class="materia laranja" id="ENC0033">ENC0033 - RECUPERAÇÃO E REABILITAÇÃO DE ÁREAS DEGRADADAS POR MINERAÇÃO - 30h <input type="checkbox"></div>
+            <div class="materia laranja" id="ENC0239">ENC0239 - MÉTODOS COMPUTACIONAIS EM GEOTECNIA - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="ENE0273">ENE0273 - PLANEJAMENTO ENERGETICO - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="ENM0174">ENM0174 - SISTEMAS ENERGETICOS - 60h <input type="checkbox"></div>
+            <div class="materia cinza" id="FAV0215">FAV0215 - ENERGIA RENOVAVEL - 60h <input type="checkbox"></div>
+        </div>
+
+        <div class="semestre">
+            <h2>Complementares / Extensão</h2>
+            <div class="materia roxo" id="DEG0200">DEG0200 - ATIVIDADE COMPLEMENTAR - 15h <input type="checkbox"></div>
+            <div class="materia roxo" id="DEG0201">DEG0201 - ATIVIDADE COMPLEMENTAR - 30h <input type="checkbox"></div>
+            <div class="materia roxo" id="DEG0203">DEG0203 - ATIVIDADE COMPLEMENTAR - 60h <input type="checkbox"></div>
+            <div class="materia roxo" id="DEX0196">DEX0196 - ATIVIDADE DE EXTENSÃO - 15h <input type="checkbox"></div>
+            <div class="materia roxo" id="DEX0197">DEX0197 - ATIVIDADE DE EXTENSÃO - 30h <input type="checkbox"></div>
+            <div class="materia roxo" id="DEX0199">DEX0199 - ATIVIDADE DE EXTENSÃO - 60h <input type="checkbox"></div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
