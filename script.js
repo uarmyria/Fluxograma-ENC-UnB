@@ -92,60 +92,46 @@ const dependencias = {
     'MAT0048': ['MAT0026']
 };
 
-// Funções de Processamento (Sistema Reativo)
-function verificarGrade() {
-    let mudancaDetectada = false;
-    const saveState = {};
+/// Função para atualizar o estado visual e salvar
+function atualizarProgresso() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const estado = {};
 
-    document.querySelectorAll('.materia').forEach(divMateria => {
-        const idAlvo = divMateria.id;
-        const input = divMateria.querySelector('input');
-        const listaReqs = dependencias[idAlvo];
+    checkboxes.forEach(input => {
+        const idMateria = input.parentElement.id;
+        const divMateria = input.parentElement;
 
-        if (!listaReqs) {
-            input.disabled = false;
+        if (input.checked) {
+            divMateria.classList.add('concluida');
         } else {
-            const habilitada = listaReqs.every(reqId => {
-                const reqInput = document.querySelector(`#${reqId} input`);
-                return reqInput && reqInput.checked;
-            });
-
-            if (habilitada) {
-                input.disabled = false;
-            } else {
-                if (!input.disabled || input.checked) {
-                    input.disabled = true;
-                    input.checked = false;
-                    divMateria.classList.remove('concluida');
-                    mudancaDetectada = true;
-                }
-            }
+            divMateria.classList.remove('concluida');
         }
-        saveState[idAlvo] = input.checked;
+        estado[idMateria] = input.checked;
     });
 
-    localStorage.setItem('fluxo_unb_data', JSON.stringify(saveState));
-    if (mudancaDetectada) verificarGrade();
+    localStorage.setItem('progressoAmbiental', JSON.stringify(estado));
 }
 
-function carregarDados() {
-    const dados = JSON.parse(localStorage.getItem('fluxo_unb_data') || '{}');
-    Object.keys(dados).forEach(id => {
+// Função para carregar o que foi salvo
+function carregarProgresso() {
+    const salvo = JSON.parse(localStorage.getItem('progressoAmbiental') || '{}');
+    
+    Object.keys(salvo).forEach(id => {
         const div = document.getElementById(id);
         if (div) {
             const input = div.querySelector('input');
-            input.checked = dados[id];
-            if (dados[id]) div.classList.add('concluida');
+            input.checked = salvo[id];
+            if (salvo[id]) div.classList.add('concluida');
         }
     });
-    verificarGrade();
 }
 
-document.querySelectorAll('input').forEach(chk => {
-    chk.addEventListener('change', function() {
-        this.parentElement.classList.toggle('concluida', this.checked);
-        verificarGrade();
-    });
+// Event Listeners
+document.addEventListener('change', (e) => {
+    if (e.target.type === 'checkbox') {
+        atualizarProgresso();
+    }
 });
 
-window.onload = carregarDados;
+// Inicia ao carregar a página
+window.onload = carregarProgresso;
