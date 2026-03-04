@@ -190,9 +190,14 @@ function atualizarContador(dados, cursoKey, config) {
     const optSet = new Set(curso.optativas_nos_niveis);
     const todosNiveis = Object.values(curso.niveis).flat();
     const obrigatorias = new Set(todosNiveis.filter(c => !optSet.has(c)));
-    const optativasNiveis = optSet;
 
-    // Coleta todos os codigos marcados (via estadoGlobal)
+    // Todas as optativas: sugeridas nos níveis + ENC + outros departamentos
+    const todasOptativas = new Set([
+        ...curso.optativas_nos_niveis,
+        ...curso.optativas_enc,
+        ...curso.optativas_outros
+    ]);
+
     let horasObr = 0;
     let horasOpt = 0;
 
@@ -201,9 +206,8 @@ function atualizarContador(dados, cursoKey, config) {
         const d = dados.disciplinas[codigo];
         if (!d) return;
 
-        // Conta se essa disciplina aparece no curso em questão
         if (obrigatorias.has(codigo)) horasObr += d.horas;
-        else if (optativasNiveis.has(codigo)) horasOpt += d.horas;
+        else if (todasOptativas.has(codigo)) horasOpt += d.horas;
     });
 
     const horasTT = horasObr + horasOpt;
