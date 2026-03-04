@@ -300,8 +300,8 @@ fetch('dados.json')
                 cursoKey: 'civil',
                 prefix: 'civ',
                 totalObr: 2370,
-                totalOpt: 915,
-                totalTT: 3285
+                totalOpt: 1560,
+                totalTT: 3930
             }
         ];
 
