@@ -9,7 +9,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    padding-top: 80px; /* espaço pro topbar fixo */
+    padding-top: 90px;
 }
 
 /* ============================================================
@@ -19,14 +19,23 @@ body {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    height: 70px;
+    min-height: 70px;
+    height: auto;
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 32px;
-    gap: 24px;
+    padding: 12px 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+#topbar-title {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
 }
 
 #topbar-title span {
@@ -34,18 +43,21 @@ body {
     font-weight: 700;
     color: #e6edf3;
     letter-spacing: 0.02em;
+    white-space: nowrap;
 }
 
 #topbar-title p {
     margin: 0;
     font-size: 0.7rem;
     color: #6e7681;
+    white-space: nowrap;
 }
 
 /* ── toggles ── */
 #toggles {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .toggle-btn {
@@ -74,7 +86,6 @@ body {
     font-size: 0.65rem;
 }
 
-/* estado ATIVO */
 .toggle-btn.ativo {
     background-color: #1f3a5f;
     border-color: #58a6ff;
@@ -86,11 +97,10 @@ body {
 }
 
 /* ============================================================
-   SEÇÕES DE CURSO — ocultadas via toggle
+   SEÇÕES DE CURSO
 ============================================================ */
 .secao-curso {
-    padding: 32px 32px 48px;
-    transition: opacity 0.25s;
+    padding: 28px 20px 48px;
 }
 
 .secao-curso.oculto {
@@ -116,8 +126,7 @@ body {
     gap: 12px;
     overflow-x: auto;
     padding-bottom: 24px;
-    /* scrollbar discreta */
-    scrollbar-width: auto;
+    scrollbar-width: thin;
     scrollbar-color: #30363d #0d1117;
 }
 
@@ -126,7 +135,9 @@ body {
 .grade-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
 
 .semestre {
-    min-width: 240px;
+    width: 230px;          /* largura fixa 260 */
+    min-width: 200px;
+    max-width: 260px;
     background-color: #161b22;
     border: 1px solid #21262d;
     border-radius: 10px;
@@ -153,10 +164,11 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;            /* ocupa toda a largura do semestre */
     padding: 7px 10px;
     margin: 5px 0;
     border-radius: 6px;
-    font-size: 0.67rem;
+    font-size: 0.68rem;     /* tamanho fixo */
     font-weight: 600;
     color: #111;
     transition: transform 0.2s, opacity 0.2s, filter 0.2s;
@@ -227,11 +239,12 @@ input[type="checkbox"] {
     border-radius: 10px;
     padding: 12px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: calc(50% - 8px) calc(50% - 8px); /* duas colunas exatas */
     gap: 0 16px;
     align-content: start;
     max-height: 380px;
     overflow-y: auto;
+    overflow-x: hidden;   /* sem scroll lateral */
     scrollbar-width: thin;
     scrollbar-color: #30363d #0d1117;
 }
@@ -239,6 +252,12 @@ input[type="checkbox"] {
 .optativas-container::-webkit-scrollbar { width: 5px; }
 .optativas-container::-webkit-scrollbar-track { background: #0d1117; }
 .optativas-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+
+/* matérias dentro das optativas respeitam a coluna */
+.optativas-container .materia {
+    width: 100%;
+    min-width: 0;
+}
 
 /* ============================================================
    CONTADOR DE HORAS
@@ -255,7 +274,7 @@ input[type="checkbox"] {
     flex-direction: column;
     gap: 5px;
     flex: 1;
-    min-width: 180px;
+    min-width: 160px;
     max-width: 320px;
 }
 
@@ -296,5 +315,29 @@ input[type="checkbox"] {
 .opt-seta {
     font-size: 0.7rem;
     opacity: 0.6;
-    transition: transform 0.2s;
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+@media (max-width: 600px) {
+    body {
+        padding-top: 110px; /* topbar pode ter 2 linhas no mobile */
+    }
+
+    .secao-curso {
+        padding: 20px 12px 40px;
+    }
+
+    .semestre {
+        width: 180px;
+        min-width: 180px;
+        max-width: 180px;
+    }
+
+    .optativas-container {
+        grid-template-columns: calc(50% - 6px) calc(50% - 6px);
+        gap: 0 12px;
+        padding: 10px;
+    }
 }
