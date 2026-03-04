@@ -1,181 +1,324 @@
-const dependencias = { 
-
-    // 2º Nível
-    'IFD0175': ['IFD0171', 'IFD0173', 'MAT0025'], // Física 2
-    'IFD0177': ['IFD0171', 'IFD0173', 'MAT0025'], // Física 2 Exp
-    'MAT0026': ['MAT0025'], // Cálculo 2
-    'ECL0033': ['CEL0088'], // Ecologia 1
-
-    // 3º Nível
-    'ENC0035': ['IFD0171', 'MAT0026', 'MAT0031'], // Mec. Sólidos
-    'ENC0241': ['IFD0171', 'MAT0025', 'IGD0173'], // Geotecnia 1
-    'ENC0240': ['IGD0173'], // Lab. Geotecnia 1
-    'ENC0266': ['IFD0175'], // Climatologia
-    'ENC0267': ['IGD0173', 'ENC0053'], // Cartografia
-    'ENC0268': ['IQD0125'], // Ciência Materiais
-    'MAT0027': ['MAT0025', 'MAT0026'], // Cálculo 3
-
-    // 4º Nível
-    'ENC0037': ['MAT0027', 'ENC0035'], // Transf. Energia
-    'ENC0235': ['ENC0241', 'ENC0240', 'MAT0027'], // Geotecnia 2
-    'ENC0269': ['CEL0088'], // Microb. Amb
-    'ENC0270': ['CEL0088'], // Microb. Exp
-    'ENC0272': ['IQD0125'], // Qualidade Água
-    'ENC0273': ['IQD0125'], // Qualidade Água Exp
-
-    // 5º Nível
-    'ENC0183': ['ENC0235'], // Geotecnia Amb
-    'ENC0251': ['ENC0267', 'ENC0037'], // Hidráulica
-    'ENC0252': ['ENC0267', 'ENC0037'], // Hidráulica Exp
-    'ENC0274': ['MAT0027'], // Estatística
-    'ENC0275': ['MAT0027'], // Métodos Comput.
-
-    // 6º Nível
-    'ENC0001': ['ENC0037', 'IQD0125'], // Cinética
-    'ENC0002': ['SOL0042', 'MAT0025'], // Econômicos
-    'ENC0166': ['ENC0037', 'ENC0267', 'ENC0274'], // Hidrologia
-    'ENE0001': ['MAT0027', 'MAT0031'], // Eletricidade
-    'EPR0068': ['ENC0274'], // Org. Industrial
-
-    // 7º Nível
-    'ENC0004': ['ECL0033', 'ENC0251', 'ENC0166'], // Saneamento
-    'ENC0007': ['ENC0251', 'ENC0001'], // Águas Residuárias
-    'ENC0010': ['ENC0251', 'ENC0001'], // Água Consumo
-    'ENC0052': ['ENC0183', 'ENC0001'], // Resíduos Sólidos
-    'EPR0059': ['EPR0068'], // Higiene/Segurança
-    'FDD0282': ['ENC0002'], // Direito Amb.
-
-    // 8º Nível
-    'ENC0013': ['ENC0275'], // Sist. Ambientais
-    'ENC0015': ['ENC0166', 'ENC0001'], // Poluição Água
-    'ENC0016': ['ENC0183', 'ENC0037'], // Poluição Solo
-    'ENC0025': ['EPR0059'], // Estágio
-
-    // 9º Nível
-    'ENC0026': ['FDD0282', 'EPR0059'], // Impactos/Riscos
-    'ENC0028': ['ENC0025'], // Projeto 1
-
-    // 10º Nível
-    'ENC0030': ['ENC0028'], // Projeto 2
-    'ENC0031': ['FDD0282', 'ENC0016', 'ENC0015'], // Planejamento/Gestão
-
-
-
-    // --------------------------------------------------------------------
-    // 📌 OPTATIVAS — Apenas dependências existentes (do seu fluxo oficial)
-    // --------------------------------------------------------------------
-
-    'CDS0007': [], // Introdução ao Desenvolvimento Sustentável
-    'CDS0008': [], // Meio Ambiente, Cultura e Sociedade
-
-    'CEL0019': ['CEL0054'], // Bioquímica e Biofísica
-    'CEL0054': [], // Bioquímica Fundamental
-    'CEL0100': [], // Tópicos em Biologia Celular
-    'CEL0053': [], // Introdução à Virologia
-
-    'ENC0188': [], // Investigações Geotécnicas
-    'ENC0237': [], // Tópicos Esp. Geotecnia 1
-    'ENC0238': ['ENC0240'], // Lab. Geotecnia 2
-
-    'ENC0123': [], // Tópicos Esp Hidráulica e Saneamento
-    'ENC0265': ['ENC0274'], // Séries Temporais
-    'ENC0271': [], // Legislação
-    'ENC0276': [], // Tratamento de Águas
-    'ENC0277': [], // Complementos Controle Ambiental
-    'ENC0280': ['ENC0269'], // Microbiologia Aplicada
-
-    'ENE0010': [], // Física Experimental 1
-    'ENE0004': [], // Seminários de Pesquisa
-
-    'EST0020': ['ENC0274'], // Probabilidade e Estatística B
-    'EST0029': ['ENC0274'], // Séries Temporais
-
-    'FMD0001': [], // Geoprocessamento
-
-    'GEO0053': [], // Climatologia Geográfica
-
-    'ICB0192': [], // Tópicos em Biologia
-
-    'IDE0007': [], // Economia Ambiental
-
-    'IGD0032': [], // Geologia Aplicada
-
-    'IGD0265': [], // Geomorfologia
-    'IGD0154': [], // Introdução ao Sensoriamento Remoto
-    'IGD0208': [], // Avaliações de Impacto
-    'IGD0194': [], // Riscos Geológicos
-
-    'INE0035': ['IQD0125'], // Química Ambiental
-    'INE0039': [], // Química Experimental
-    'INE0040': ['IQD0125'], // Química Experimental 2
-    'INE0034': ['IQD0125'], // Química 2 Ambiental
-
-    'MAT0151': ['MAT0025'], // Matemática Financeira
-
-    'SOL0001': [], // Introdução à Engenharia Ambiental
-    'SOL0041': [], // Ciência dos Solos
-    'SOL0042': ['MAT0025'], // Estatística Básica
-    'SOL0043': [], // Física dos Solos
-
+// =============================================================
+//  DEPENDÊNCIAS (Ambiental — mantidas igual ao original)
+// =============================================================
+const dependencias = {
+    'IFD0175': ['IFD0171', 'IFD0173', 'MAT0025'],
+    'IFD0177': ['IFD0171', 'IFD0173', 'MAT0025'],
+    'MAT0026': ['MAT0025'],
+    'ECL0033': ['CEL0088'],
+    'ENC0035': ['IFD0171', 'MAT0026', 'MAT0031'],
+    'ENC0241': ['IFD0171', 'MAT0025', 'IGD0173'],
+    'ENC0240': ['IGD0173'],
+    'ENC0266': ['IFD0175'],
+    'ENC0267': ['IGD0173', 'ENC0053'],
+    'ENC0268': ['IQD0125'],
+    'MAT0027': ['MAT0025', 'MAT0026'],
+    'ENC0037': ['MAT0027', 'ENC0035'],
+    'ENC0235': ['ENC0241', 'ENC0240', 'MAT0027'],
+    'ENC0269': ['CEL0088'],
+    'ENC0270': ['CEL0088'],
+    'ENC0272': ['IQD0125'],
+    'ENC0273': ['IQD0125'],
+    'ENC0183': ['ENC0235'],
+    'ENC0251': ['ENC0267', 'ENC0037'],
+    'ENC0252': ['ENC0267', 'ENC0037'],
+    'ENC0274': ['MAT0027'],
+    'ENC0275': ['MAT0027'],
+    'ENC0001': ['ENC0037', 'IQD0125'],
+    'ENC0002': ['SOL0042', 'MAT0025'],
+    'ENC0166': ['ENC0037', 'ENC0267', 'ENC0274'],
+    'ENE0001': ['MAT0027', 'MAT0031'],
+    'EPR0068': ['ENC0274'],
+    'ENC0004': ['ECL0033', 'ENC0251', 'ENC0166'],
+    'ENC0007': ['ENC0251', 'ENC0001'],
+    'ENC0010': ['ENC0251', 'ENC0001'],
+    'ENC0052': ['ENC0183', 'ENC0001'],
+    'EPR0059': ['EPR0068'],
+    'FDD0282': ['ENC0002'],
+    'ENC0013': ['ENC0275'],
+    'ENC0015': ['ENC0166', 'ENC0001'],
+    'ENC0016': ['ENC0183', 'ENC0037'],
+    'ENC0025': ['EPR0059'],
+    'ENC0026': ['FDD0282', 'EPR0059'],
+    'ENC0028': ['ENC0025'],
+    'ENC0030': ['ENC0028'],
+    'ENC0031': ['FDD0282', 'ENC0016', 'ENC0015'],
+    'ENC0238': ['ENC0240'],
+    'ENC0003': ['SOL0042', 'ENC0269'],
+    'ENC0011': ['ENC0166', 'ENC0275'],
+    'ENC0169': ['ENC0166', 'ENC0251', 'ENC0252'],
+    'ENC0264': ['ENC0267']
 };
 
+// =============================================================
+//  ESTADO GLOBAL — quais códigos estão marcados
+// =============================================================
+// Mapa: codigo -> boolean (checked)
+const estadoGlobal = {};
 
+// =============================================================
+//  MONTA UMA GRADE (ambiental ou civil)
+// =============================================================
+function montarGrade(dados, cursoKey, containerId) {
+    const container = document.getElementById(containerId);
+    const niveis = dados.cursos[cursoKey].niveis;
 
-/* =============================================================
-   SISTEMA DE VERIFICAÇÃO — NÃO ALTERADO
-============================================================= */
+    Object.keys(niveis).forEach(num => {
+        const semestre = document.createElement('div');
+        semestre.className = 'semestre';
 
-function verificarGrade() {
-    let mudancaDetectada = false;
-    const saveState = {};
+        const titulo = document.createElement('h2');
+        titulo.textContent = `${num}º Nível`;
+        semestre.appendChild(titulo);
 
-    Object.keys(dependencias).forEach(idAlvo => {
-        const divMateria = document.getElementById(idAlvo);
-        if (!divMateria) return;
-
-        const input = divMateria.querySelector('input');
-        const listaReqs = dependencias[idAlvo];
-
-        const habilitada = listaReqs.every(reqId => {
-            const reqInput = document.querySelector(`#${reqId} input`);
-            return reqInput && reqInput.checked;
+        niveis[num].forEach(codigo => {
+            const d = dados.disciplinas[codigo];
+            if (!d) { console.warn(`Código ${codigo} não encontrado!`); return; }
+            semestre.appendChild(criarMateria(codigo, d, cursoKey));
         });
 
-        if (habilitada) {
-            input.disabled = false;
-        } else {
-            if (!input.disabled || input.checked) {
-                input.disabled = true;
-                input.checked = false;
-                divMateria.classList.remove('concluida');
-                mudancaDetectada = true;
+        container.appendChild(semestre);
+    });
+}
+
+// =============================================================
+//  MONTA SEÇÃO DE OPTATIVAS
+// =============================================================
+function montarOptativas(dados, cursoKey, encContainerId, outrosContainerId) {
+    const curso = dados.cursos[cursoKey];
+
+    function criarBlocoOptativas(containerEl, lista) {
+        const bloco = document.createElement('div');
+        bloco.className = 'optativas-container oculto-opt';
+        lista.forEach(codigo => {
+            const d = dados.disciplinas[codigo];
+            if (!d) return;
+            bloco.appendChild(criarMateria(codigo, d, cursoKey));
+        });
+
+        // adiciona seta e listener no titulo do header anterior
+        const header = containerEl.previousElementSibling;
+        const titulo = header.querySelector('.optativas-titulo');
+        titulo.style.cursor = 'pointer';
+        titulo.style.userSelect = 'none';
+
+        const seta = document.createElement('span');
+        seta.className = 'opt-seta';
+        seta.textContent = ' ▶';
+        titulo.appendChild(seta);
+
+        titulo.addEventListener('click', () => {
+            const aberto = !bloco.classList.contains('oculto-opt');
+            bloco.classList.toggle('oculto-opt', aberto);
+            seta.textContent = aberto ? ' ▶' : ' ▼';
+        });
+
+        containerEl.appendChild(bloco);
+    }
+
+    criarBlocoOptativas(document.getElementById(encContainerId), curso.optativas_enc);
+    criarBlocoOptativas(document.getElementById(outrosContainerId), curso.optativas_outros);
+}
+
+// =============================================================
+//  CRIA DIV DE UMA MATÉRIA (com data-codigo para sincronização)
+// =============================================================
+function criarMateria(codigo, d, cursoKey) {
+    const div = document.createElement('div');
+    div.className = `materia ${d.tipo}`;
+    // ID único por instância: codigo-curso
+    div.id = `${codigo}-${cursoKey}`;
+    div.dataset.codigo = codigo;
+    div.innerHTML = `${codigo} - ${d.nome} - ${d.horas}h <input type="checkbox" data-codigo="${codigo}" data-curso="${cursoKey}">`;
+    return div;
+}
+
+// =============================================================
+//  SINCRONIZAÇÃO: ao marcar qualquer checkbox, atualiza todos
+//  os elementos com o mesmo código (nos dois cursos)
+// =============================================================
+function sincronizarCodigo(codigo, checked) {
+    estadoGlobal[codigo] = checked;
+
+    // Atualiza TODOS os checkboxes com esse código (podem estar em 2 cursos)
+    document.querySelectorAll(`input[data-codigo="${codigo}"]`).forEach(chk => {
+        if (!chk.disabled) {
+            chk.checked = checked;
+            chk.closest('.materia').classList.toggle('concluida', checked);
+        }
+    });
+}
+
+// =============================================================
+//  VERIFICAÇÃO DE DEPENDÊNCIAS — opera sobre estadoGlobal
+// =============================================================
+function verificarDependencias() {
+    let mudou = true;
+    while (mudou) {
+        mudou = false;
+        Object.keys(dependencias).forEach(idAlvo => {
+            const reqs = dependencias[idAlvo];
+            const habilitada = reqs.every(r => estadoGlobal[r]);
+
+            // Aplica a TODOS os elementos com esse código
+            document.querySelectorAll(`input[data-codigo="${idAlvo}"]`).forEach(chk => {
+                if (!habilitada) {
+                    if (chk.checked || !chk.disabled) {
+                        chk.disabled = true;
+                        if (chk.checked) {
+                            chk.checked = false;
+                            chk.closest('.materia').classList.remove('concluida');
+                            if (estadoGlobal[idAlvo]) {
+                                estadoGlobal[idAlvo] = false;
+                                mudou = true;
+                            }
+                        }
+                    }
+                } else {
+                    chk.disabled = false;
+                }
+            });
+        });
+    }
+}
+
+// =============================================================
+//  ATUALIZA CONTADOR DE UM CURSO ESPECÍFICO
+// =============================================================
+function atualizarContador(dados, cursoKey, config) {
+    const curso = dados.cursos[cursoKey];
+    const optSet = new Set(curso.optativas_nos_niveis);
+    const todosNiveis = Object.values(curso.niveis).flat();
+    const obrigatorias = new Set(todosNiveis.filter(c => !optSet.has(c)));
+    const optativasNiveis = optSet;
+
+    // Coleta todos os codigos marcados (via estadoGlobal)
+    let horasObr = 0;
+    let horasOpt = 0;
+
+    Object.keys(estadoGlobal).forEach(codigo => {
+        if (!estadoGlobal[codigo]) return;
+        const d = dados.disciplinas[codigo];
+        if (!d) return;
+
+        // Conta se essa disciplina aparece no curso em questão
+        if (obrigatorias.has(codigo)) horasObr += d.horas;
+        else if (optativasNiveis.has(codigo)) horasOpt += d.horas;
+    });
+
+    const horasTT = horasObr + horasOpt;
+    const pctObr = Math.min((horasObr / config.totalObr) * 100, 100).toFixed(1);
+    const pctOpt = Math.min((horasOpt / config.totalOpt) * 100, 100).toFixed(1);
+    const pctTT  = Math.min((horasTT  / config.totalTT)  * 100, 100).toFixed(1);
+
+    document.getElementById(`${config.prefix}-barra-obr`).style.width = `${pctObr}%`;
+    document.getElementById(`${config.prefix}-barra-opt`).style.width = `${pctOpt}%`;
+    document.getElementById(`${config.prefix}-barra-tt`).style.width  = `${pctTT}%`;
+
+    document.getElementById(`${config.prefix}-info-obr`).textContent = `${horasObr}h / ${config.totalObr}h — ${pctObr}%`;
+    document.getElementById(`${config.prefix}-info-opt`).textContent = `${horasOpt}h / ${config.totalOpt}h — ${pctOpt}%`;
+    document.getElementById(`${config.prefix}-info-tt`).textContent  = `${horasTT}h / ${config.totalTT}h — ${pctTT}%`;
+}
+
+// =============================================================
+//  ATUALIZA OS DOIS CONTADORES DE UMA VEZ
+// =============================================================
+function atualizarTodosContadores(dados, configs) {
+    configs.forEach(c => atualizarContador(dados, c.cursoKey, c));
+}
+
+// =============================================================
+//  SALVA E CARREGA ESTADO (localStorage)
+// =============================================================
+function salvarEstado() {
+    localStorage.setItem('unb_grade_estado', JSON.stringify(estadoGlobal));
+}
+
+function carregarEstado(dados, configs) {
+    const salvo = JSON.parse(localStorage.getItem('unb_grade_estado') || '{}');
+
+    Object.keys(salvo).forEach(codigo => {
+        if (salvo[codigo]) estadoGlobal[codigo] = true;
+    });
+
+    // Aplica o estado nos checkboxes antes de verificar dependências
+    Object.keys(estadoGlobal).forEach(codigo => {
+        if (!estadoGlobal[codigo]) return;
+        document.querySelectorAll(`input[data-codigo="${codigo}"]`).forEach(chk => {
+            chk.checked = true;
+            chk.closest('.materia').classList.add('concluida');
+        });
+    });
+
+    verificarDependencias();
+    atualizarTodosContadores(dados, configs);
+}
+
+// =============================================================
+//  REGISTRA EVENTOS
+// =============================================================
+function registrarEventos(dados, configs) {
+    document.addEventListener('change', function (e) {
+        const chk = e.target;
+        if (!chk.matches('input[type="checkbox"][data-codigo]')) return;
+
+        const codigo = chk.dataset.codigo;
+        const checked = chk.checked;
+
+        // Atualiza estado global e sincroniza todas as instâncias
+        sincronizarCodigo(codigo, checked);
+        verificarDependencias();
+        atualizarTodosContadores(dados, configs);
+        salvarEstado();
+    });
+}
+
+// =============================================================
+//  PONTO DE ENTRADA
+// =============================================================
+fetch('dados.json')
+    .then(r => r.json())
+    .then(dados => {
+        // --- Ambiental ---
+        montarGrade(dados, 'ambiental', 'grade-ambiental');
+        montarOptativas(dados, 'ambiental', 'opt-amb-enc', 'opt-amb-outros');
+
+        // --- Civil ---
+        montarGrade(dados, 'civil', 'grade-civil');
+        montarOptativas(dados, 'civil', 'opt-civ-enc', 'opt-civ-outros');
+
+        // Configurações dos contadores (horas calculadas a partir do JSON)
+        const configs = [
+            {
+                cursoKey: 'ambiental',
+                prefix: 'amb',
+                totalObr: 2760,
+                totalOpt: 1140,
+                totalTT: 3900
+            },
+            {
+                cursoKey: 'civil',
+                prefix: 'civ',
+                totalObr: 2370,
+                totalOpt: 915,
+                totalTT: 3285
             }
-        }
-        saveState[idAlvo] = input.checked;
-    });
+        ];
 
-    localStorage.setItem('unb_ambiental_data', JSON.stringify(saveState));
-    if (mudancaDetectada) verificarGrade();
+        registrarEventos(dados, configs);
+        carregarEstado(dados, configs);
+    })
+    .catch(err => console.error('Erro ao carregar dados.json:', err));
+
+// =============================================================
+//  TOGGLE DE CURSOS
+// =============================================================
+function toggleCurso(curso) {
+    const secao = document.getElementById(`secao-${curso}`);
+    const btn   = document.getElementById(`btn-${curso}`);
+
+    const estaAtivo = btn.classList.contains('ativo');
+
+    btn.classList.toggle('ativo', !estaAtivo);
+    secao.classList.toggle('oculto', estaAtivo);
 }
-
-function carregarDados() {
-    const dados = JSON.parse(localStorage.getItem('unb_ambiental_data') || '{}');
-    Object.keys(dados).forEach(id => {
-        const div = document.getElementById(id);
-        if (div) {
-            const input = div.querySelector('input');
-            input.checked = dados[id];
-            if (dados[id]) div.classList.add('concluida');
-        }
-    });
-    verificarGrade();
-}
-
-document.querySelectorAll('input').forEach(chk => {
-    chk.addEventListener('change', function() {
-        this.parentElement.classList.toggle('concluida', this.checked);
-        verificarGrade();
-    });
-});
-
-window.onload = carregarDados;

@@ -1,108 +1,300 @@
+/* ============================================================
+   BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
     background-color: #0d1117;
     color: #c9d1d9;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    padding-top: 80px; /* espaço pro topbar fixo */
 }
 
-header { 
-    text-align: center; 
-    margin-bottom: 25px; 
-}
-
-#grade-container {
+/* ============================================================
+   TOPBAR FIXO
+============================================================ */
+#topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: 70px;
+    background-color: #161b22;
+    border-bottom: 1px solid #30363d;
     display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding-bottom: 40px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    gap: 24px;
 }
+
+#topbar-title span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e6edf3;
+    letter-spacing: 0.02em;
+}
+
+#topbar-title p {
+    margin: 0;
+    font-size: 0.7rem;
+    color: #6e7681;
+}
+
+/* ── toggles ── */
+#toggles {
+    display: flex;
+    gap: 10px;
+}
+
+.toggle-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 22px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    background-color: #0d1117;
+    color: #6e7681;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 110px;
+}
+
+.toggle-btn .toggle-sigla {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.toggle-btn .toggle-nome {
+    font-size: 0.65rem;
+}
+
+/* estado ATIVO */
+.toggle-btn.ativo {
+    background-color: #1f3a5f;
+    border-color: #58a6ff;
+    color: #58a6ff;
+}
+
+.toggle-btn.ativo .toggle-sigla {
+    color: #58a6ff;
+}
+
+/* ============================================================
+   SEÇÕES DE CURSO — ocultadas via toggle
+============================================================ */
+.secao-curso {
+    padding: 32px 32px 48px;
+    transition: opacity 0.25s;
+}
+
+.secao-curso.oculto {
+    display: none;
+}
+
+.curso-header {
+    margin-bottom: 20px;
+}
+
+.curso-header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #e6edf3;
+    font-weight: 600;
+}
+
+/* ============================================================
+   GRADE DE SEMESTRES
+============================================================ */
+.grade-container {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 24px;
+    /* scrollbar discreta */
+    scrollbar-width: auto;
+    scrollbar-color: #30363d #0d1117;
+}
+
+.grade-container::-webkit-scrollbar { height: 5px; }
+.grade-container::-webkit-scrollbar-track { background: #0d1117; }
+.grade-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
 
 .semestre {
-    min-width: 320px;
+    min-width: 240px;
     background-color: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 12px;
-    padding: 15px;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+    padding: 12px;
     flex-shrink: 0;
 }
 
 h2 {
     color: #58a6ff;
-    font-size: 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
     text-align: center;
-    border-bottom: 2px solid #30363d;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid #21262d;
+    margin: 0 0 10px;
+    padding-bottom: 8px;
 }
 
+/* ============================================================
+   MATÉRIAS
+============================================================ */
 .materia {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    color: #000;
-    transition: 0.4s;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    padding: 7px 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    font-size: 0.67rem;
+    font-weight: 600;
+    color: #111;
+    transition: transform 0.2s, opacity 0.2s, filter 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    cursor: default;
 }
 
-/* Legenda de Cores da UnB */
-.vermelho { background-color: #ff4d4d; }
-.laranja { background-color: #ff944d; }
-.amarelo { background-color: #ffdb4d; }
-.azul { background-color: #4da6ff; }
-.verde { background-color: #4dff88; }
-.cinza { background-color: #8c8c8c; }
-.roxo { background-color: #b366ff; }
-.branco { background-color: #ffffff; }
+/* CORES por área */
+.basicas    { background-color: #e8e8e4; }
+.estrut     { background-color: #eddcd2; }
+.saneamento { background-color: #9fc5dc; }
+.geotec     { background-color: #f5e6c8; }
+.gestamb    { background-color: #b8d8d8; }
+.geoprocess { background-color: #f5c6cb; }
+.transport  { background-color: #c8dce8; }
+.humanas    { background-color: #cfd8d5; }
+.pfestag    { background-color: #f0c8da; }
+.engmat     { background-color: #b8b0ae; }
+.extensao   { background-color: #7de8f0; }
 
-/* Estados Visuais */
+/* estados */
 .concluida {
-    opacity: 0.3 !important;
-    filter: grayscale(0.7);
+    opacity: 0.6 !important;
+    filter: grayscale(0.6);
     text-decoration: line-through;
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
 .materia:has(input:disabled) {
-    opacity: 0.15;
+    opacity: 0.3;
     filter: grayscale(1);
     pointer-events: none;
 }
 
 input[type="checkbox"] {
-    width: 22px;
-    height: 22px;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-left: 8px;
     cursor: pointer;
+    accent-color: #58a6ff;
 }
 
-/* --------------------------------------------------------
-   🌿 ESTILO PARA O BLOCO DAS OPTATIVAS (NOVO)
--------------------------------------------------------- */
-
-.optativas-container {
-    min-width: 320px;
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 12px;
-    padding: 15px;
-    flex-shrink: 0;
+/* ============================================================
+   OPTATIVAS
+============================================================ */
+.optativas-header {
+    margin-top: 24px;
+    margin-bottom: 8px;
 }
 
 .optativas-titulo {
-    color: #9b59b6; /* lilás para diferenciar dos semestres */
-    font-size: 1.2rem;
-    text-align: center;
-    border-bottom: 2px solid #30363d;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+    color: #58a6ff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid #21262d;
+    margin: 0 0 8px;
+    padding-bottom: 8px;
+    text-align: left;
 }
 
-/* Optativas usam exatamente o MESMO estilo das obrigatórias */
-.optativas-container .materia {
-    border-left: 6px solid #9b59b6;
+.optativas-container {
+    width: 100%;
+    background-color: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+    align-content: start;
+    max-height: 380px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #30363d #0d1117;
+}
+
+.optativas-container::-webkit-scrollbar { width: 5px; }
+.optativas-container::-webkit-scrollbar-track { background: #0d1117; }
+.optativas-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+
+/* ============================================================
+   CONTADOR DE HORAS
+============================================================ */
+.contador {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.contador-bloco {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    min-width: 180px;
+    max-width: 320px;
+}
+
+.contador-label {
+    color: #8b949e;
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.barra-fundo {
+    background-color: #21262d;
+    border-radius: 6px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.barra-preenchida {
+    height: 100%;
+    border-radius: 6px;
+    background-color: #58a6ff;
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+.contador-info {
+    font-size: 0.72rem;
+    color: #8b949e;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── toggle de optativas ── */
+.oculto-opt {
+    display: none;
+}
+
+.opt-seta {
+    font-size: 0.7rem;
+    opacity: 0.6;
+    transition: transform 0.2s;
 }
