@@ -26,8 +26,8 @@
 
     "ENC0037": { "nome": "TRANSFERÊNCIA DE ENERGIA E MASSA",                    "horas": 75, "tipo": "saneamento" },
     "ENC0235": { "nome": "GEOTECNIA 2",                                         "horas": 60, "tipo": "geotec" },
-    "ENC0269": { "nome": "MICROBIOLOGIA AMBIENTAL",                             "horas": 30, "tipo": "gestamb" },
-    "ENC0270": { "nome": "MICROBIOLOGIA AMBIENTAL E EXPERIMENTAL",              "horas": 30, "tipo": "gestamb" },
+    "ENC0269": { "nome": "MICROBIOLOGIA AMBIENTAL",                             "horas": 30, "tipo": "saneamento" },
+    "ENC0270": { "nome": "MICROBIOLOGIA AMBIENTAL E EXPERIMENTAL",              "horas": 30, "tipo": "saneamento" },
     "ENC0272": { "nome": "ASPECTOS QUÍMICOS DE QUALIDADE DA ÁGUA",              "horas": 30, "tipo": "saneamento" },
     "ENC0273": { "nome": "ASPECTOS QUÍMICOS DE QUALIDADE DE ÁGUA-EXPERIMENTAL", "horas": 30, "tipo": "saneamento" },
 
@@ -461,17 +461,18 @@
       },
       "optativas_nos_niveis": ["ENC0264", "ENC0003", "ENC0011", "ENC0169"],
       "optativas_enc": [
-      "ENC0003", "ENC0006", "ENC0009", "ENC0011", "ENC0012", "ENC0014",
-      "ENC0017", "ENC0018", "ENC0019", "ENC0020", "ENC0021", "ENC0022",
-      "ENC0023", "ENC0032", "ENC0033", "ENC0034", "ENC0044", "ENC0046",
-      "ENC0050", "ENC0051", "ENC0064", "ENC0162", "ENC0165", "ENC0169",
-      "ENC0172", "ENC0180", "ENC0182", "ENC0187", "ENC0188", "ENC0208",
-      "ENC0237", "ENC0238", "ENC0239", "ENC0245", "ENC0253", "ENC0256",
-      "ENC0261", "ENC0264", "ENC0271", "ENC0279", "ENC0281", "ENC0282"
+        "ENC0003", "ENC0011", "ENC0012", "ENC0014", "ENC0017", "ENC0018", 
+        "ENC0019", "ENC0020", "ENC0021", "ENC0022", "ENC0023", "ENC0032", 
+        "ENC0033", "ENC0034", "ENC0044", "ENC0046", "ENC0050", "ENC0051", 
+        "ENC0064", "ENC0162", "ENC0165", "ENC0169", "ENC0172", "ENC0180", 
+        "ENC0182", "ENC0187", "ENC0188", "ENC0208", "ENC0237", "ENC0238", 
+        "ENC0239", "ENC0245", "ENC0253", "ENC0256", "ENC0261", "ENC0264", 
+        "ENC0271", "ENC0279", "ENC0281", 
+        "ENC0282"
       ],
 
       "optativas_outros": [
-        "CDS0007", "CDS0008", "CEL0019", "CEL0054", "CET0039",
+        "CDS0007", "CDS0008", "CEL0019", "CEL0054", "CET0039", "CIC0007",
         "DEG0200", "DEG0201", "DEG0202", "DEG0203", "DEG0205", "DEG0206",
         "DEX0196", "DEX0197", "DEX0198", "DEX0199", "DEX0200", "DEX0201",
         "DSC0050", "DSC0063", "ECL0030", "ECL0036", "EFL0010",
@@ -479,7 +480,14 @@
         "FAV0215", "FCE0187", "FGA0107", "FTD0007",
         "GEA0068", "GEA0075",
         "IQD0051", "IQD0063", "IQD0118", "IQD0282",
-        "LIP0096", "LIP0174", "MAT0028", "MAT0048", "TAU0013"
+        "LIP0096", "LIP0174", "MAT0028", "MAT0048", "TAU0013",
+        "CDS0007", "CDS0008", "CEL0019", "CEL0054", "CET0039", "CIC0007", 
+        "DEG0200", "DEG0201", "DEG0202", "DEG0203", "DEG0205", "DEG0206", 
+        "DEX0196", "DEX0197", "DEX0198", "DEX0199", "DEX0200", "DEX0201", 
+        "DSC0050", "DSC0063", "ECL0030", "ECL0036", "EFL0010", 
+        "ENE0002", "ENE0273", "ENM0174", "ENM0176", "FAV0215", "FCE0187", 
+        "FGA0107", "FTD0007", "GEA0068", "GEA0075", "IQD0051", "IQD0063", 
+        "IQD0118", "IQD0282", "LIP0096", "LIP0174", "MAT0028", "MAT0048", "TAU0013"
       ]
     },
     "civil": {
@@ -511,16 +519,16 @@
         "ENC0043", "ENC0044", "ENC0045", "ENC0047", "ENC0048", "ENC0049",
         "ENC0051", "ENC0052", "ENC0054", "ENC0062", "ENC0064", "ENC0066",
         "ENC0095", "ENC0122", "ENC0123", "ENC0124", "ENC0129", "ENC0136",
-        "ENC0138", "ENC0139", "ENC0141", "ENC0142", "ENC0143", "ENC0144",
+        "ENC0138", "ENC0139", "ENC0141", "ENC0142",
         "ENC0149", "ENC0150", "ENC0151", "ENC0152", "ENC0153", "ENC0154",
         "ENC0155", "ENC0156", "ENC0157", "ENC0158", "ENC0159", "ENC0160",
         "ENC0162", "ENC0164", "ENC0165", "ENC0167", "ENC0170", "ENC0171",
         "ENC0172", "ENC0173", "ENC0174", "ENC0176", "ENC0178", "ENC0179",
         "ENC0180", "ENC0182", "ENC0184", "ENC0185", "ENC0186", "ENC0187",
         "ENC0188", "ENC0191", "ENC0192", "ENC0193", "ENC0195", "ENC0200",
-        "ENC0202", "ENC0206", "ENC0207", "ENC0208", "ENC0214", "ENC0215",
+        "ENC0202", "ENC0206", "ENC0207", "ENC0208", "ENC0214",
         "ENC0216", "ENC0217", "ENC0218", "ENC0219", "ENC0221", "ENC0223",
-        "ENC0224", "ENC0225", "ENC0226", "ENC0227", "ENC0228", "ENC0229",
+        "ENC0225", "ENC0226", "ENC0227", "ENC0228", "ENC0229",
         "ENC0231", "ENC0232", "ENC0237", "ENC0238", "ENC0239", "ENC0244",
         "ENC0245", "ENC0247", "ENC0248", "ENC0249", "ENC0250", "ENC0253",
         "ENC0256", "ENC0257", "ENC0258", "ENC0260", "ENC0261", "ENC0262",

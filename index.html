@@ -3,34 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fluxogramas - UnB</title>
+    <title>Fluxogramas - ENC/UnB</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- HEADER FIXO COM TOGGLES -->
+<p id="erro-carregamento" class="mensagem-erro" role="alert" hidden></p>
+
 <div id="topbar">
     <div id="topbar-title">
-        <span>Fluxogramas UnB</span>
+        <span>Fluxogramas ENC</span>
         <p>Matriz Curricular · SIGAA</p>
     </div>
-    <div id="toggles">
-        <button class="toggle-btn ativo" id="btn-ambiental" onclick="toggleCurso('ambiental')">
-            <span class="toggle-sigla">ENB</span>
-            <span class="toggle-nome">Eng. Ambiental</span>
-        </button>
-        <button class="toggle-btn ativo" id="btn-civil" onclick="toggleCurso('civil')">
-            <span class="toggle-sigla">ENC</span>
-            <span class="toggle-nome">Eng. Civil</span>
-        </button>
+    <div id="topbar-controls">
+        <button id="btn-tema" onclick="toggleTema()" title="Alternar tema">🌙</button>
+        
+        <div id="toggles">
+            <button class="toggle-btn ativo" id="btn-ambiental" onclick="toggleCurso('ambiental')">
+                <span class="toggle-sigla">AMB</span>
+                <span class="toggle-nome">Eng. Ambiental</span>
+            </button>
+            <button class="toggle-btn ativo" id="btn-civil" onclick="toggleCurso('civil')">
+                <span class="toggle-sigla">CIVIL</span>
+                <span class="toggle-nome">Eng. Civil</span>
+            </button>
+        </div>
+
+        <div id="modulo-livre-wrap">
+            <label for="input-modulo-livre" id="modulo-livre-label">Módulo Livre</label>
+            <div id="modulo-livre-input-wrap">
+                <input
+                    type="number"
+                    id="input-modulo-livre"
+                    min="0" max="360" step="15" value="0"
+                    oninput="atualizarModuloLivre(this.value)"
+                />
+                <span id="modulo-livre-suffix">h</span>
+            </div>
+        </div>
+
+        
     </div>
 </div>
 
 <!-- ENGENHARIA AMBIENTAL -->
 <div id="secao-ambiental" class="secao-curso">
-    <div class="curso-header">
-        <h1>Engenharia Ambiental</h1>
-    </div>
+    <div class="curso-header"><h1>Engenharia Ambiental</h1></div>
     <section id="contador-ambiental" class="contador">
         <div class="contador-bloco">
             <span class="contador-label">Obrigatórias</span>
@@ -51,7 +69,7 @@
     <main id="grade-ambiental" class="grade-container"></main>
     <section id="optativas-ambiental">
         <div class="optativas-header">
-            <h2 class="optativas-titulo">Optativas — Departamento de Engenharia Civil (ENC)</h2>
+            <h2 class="optativas-titulo">Optativas — Departamento de Engenharia Civil e Ambiental (ENC)</h2>
         </div>
         <div id="opt-amb-enc"></div>
         <div class="optativas-header">
@@ -63,9 +81,7 @@
 
 <!-- ENGENHARIA CIVIL -->
 <div id="secao-civil" class="secao-curso">
-    <div class="curso-header">
-        <h1>Engenharia Civil</h1>
-    </div>
+    <div class="curso-header"><h1>Engenharia Civil</h1></div>
     <section id="contador-civil" class="contador">
         <div class="contador-bloco">
             <span class="contador-label">Obrigatórias</span>
@@ -86,7 +102,7 @@
     <main id="grade-civil" class="grade-container"></main>
     <section id="optativas-civil">
         <div class="optativas-header">
-            <h2 class="optativas-titulo">Optativas — Departamento de Engenharia Civil (ENC)</h2>
+            <h2 class="optativas-titulo">Optativas — Departamento de Engenharia Civil e Ambiental (ENC)</h2>
         </div>
         <div id="opt-civ-enc"></div>
         <div class="optativas-header">

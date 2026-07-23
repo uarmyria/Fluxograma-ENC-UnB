@@ -1,19 +1,95 @@
 /* ============================================================
+   VARIÁVEIS DE TEMA
+============================================================ */
+:root {
+    /* escuro (padrão) */
+    --bg:           #0d1117;
+    --bg2:          #161b22;
+    --border:       #21262d;
+    --border2:      #30363d;
+    --text:         #c9d1d9;
+    --text-muted:   #8b949e;
+    --text-dim:     #6e7681;
+    --title:        #e6edf3;
+    --accent:       #58a6ff;
+    --accent-bg:    #1f3a5f;
+    --scrollbar:    #30363d;
+
+    /* cores das matérias — escuro (pastéis mais saturados) */
+    --basicas:    #c8c8c2;
+    --estrut:     #d4b5a0;
+    --saneamento: #7aaec9;
+    --geotec:     #d9c88a;
+    --gestamb:    #85b8b8;
+    --geoprocess: #d9939a;
+    --transport:  #93b8cc;
+    --humanas:    #93b0ac;
+    --pfestag:    #cc9ab5;
+    --engmat:     #9a9190;
+    --extensao:   #3dd6e0;
+}
+
+[data-tema="claro"] {
+    --bg:           #f6f8fa;
+    --bg2:          #ffffff;
+    --border:       #d0d7de;
+    --border2:      #c9d1d9;
+    --text:         #24292f;
+    --text-muted:   #57606a;
+    --text-dim:     #6e7781;
+    --title:        #1f2328;
+    --accent:       #0969da;
+    --accent-bg:    #dbeafe;
+    --scrollbar:    #c9d1d9;
+
+    /* cores das matérias — claro (pastéis originais) */
+    --basicas:    #e8e8e4;
+    --estrut:     #eddcd2;
+    --saneamento: #9fc5dc;
+    --geotec:     #f5e6c8;
+    --gestamb:    #b8d8d8;
+    --geoprocess: #f5c6cb;
+    --transport:  #c8dce8;
+    --humanas:    #cfd8d5;
+    --pfestag:    #f0c8da;
+    --engmat:     #b8b0ae;
+    --extensao:   #7de8f0;
+}
+
+/* ============================================================
    BASE
 ============================================================ */
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
-    background-color: #0d1117;
-    color: #c9d1d9;
+    background-color: var(--bg);
+    color: var(--text);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    padding-top: 90px;
+    padding-top: 70px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.mensagem-erro {
+    position: fixed;
+    z-index: 200;
+    top: 12px;
+    left: 50%;
+    width: min(640px, calc(100% - 32px));
+    margin: 0;
+    padding: 12px 16px;
+    transform: translateX(-50%);
+    border: 1px solid #f85149;
+    border-radius: 8px;
+    background: #3d1517;
+    color: #ffdcd7;
+    font-size: 0.9rem;
+    text-align: center;
 }
 
 /* ============================================================
-   TOPBAR FIXO
+   TOPBAR
 ============================================================ */
 #topbar {
     position: fixed;
@@ -21,43 +97,49 @@ body {
     z-index: 100;
     min-height: 70px;
     height: auto;
-    background-color: #161b22;
-    border-bottom: 1px solid #30363d;
+    background-color: var(--bg2);
+    border-bottom: 1px solid var(--border2);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 24px;
+    padding: 10px 10%;
     gap: 16px;
     flex-wrap: wrap;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 #topbar-title {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    min-width: 0;
 }
 
 #topbar-title span {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #e6edf3;
+    color: var(--title);
     letter-spacing: 0.02em;
     white-space: nowrap;
 }
 
 #topbar-title p {
     margin: 0;
-    font-size: 0.7rem;
-    color: #6e7681;
+    font-size: 1rem;
+    color: var(--text-dim);
     white-space: nowrap;
 }
 
-/* ── toggles ── */
+#topbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* toggles de curso */
 #toggles {
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .toggle-btn {
@@ -66,34 +148,92 @@ body {
     align-items: center;
     justify-content: center;
     gap: 2px;
-    padding: 8px 22px;
+    padding: 7px 18px;
     border-radius: 8px;
-    border: 1px solid #30363d;
-    background-color: #0d1117;
-    color: #6e7681;
+    border: 1px solid var(--border2);
+    background-color: var(--bg);
+    color: var(--text-dim);
     cursor: pointer;
     transition: all 0.2s;
-    min-width: 110px;
+    min-width: 100px;
 }
 
 .toggle-btn .toggle-sigla {
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 0.05em;
 }
 
 .toggle-btn .toggle-nome {
-    font-size: 0.65rem;
+    font-size: 0.82rem;
 }
 
 .toggle-btn.ativo {
-    background-color: #1f3a5f;
-    border-color: #58a6ff;
-    color: #58a6ff;
+    background-color: var(--accent-bg);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
-.toggle-btn.ativo .toggle-sigla {
-    color: #58a6ff;
+/* módulo livre */
+#modulo-livre-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+#modulo-livre-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+#modulo-livre-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 7px;
+    padding: 4px 10px;
+}
+
+#input-modulo-livre {
+    width: 52px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+#input-modulo-livre::-webkit-outer-spin-button,
+#input-modulo-livre::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+#modulo-livre-suffix {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* botão tema */
+#btn-tema {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 7px 11px;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+#btn-tema:hover {
+    border-color: var(--accent);
 }
 
 /* ============================================================
@@ -101,58 +241,61 @@ body {
 ============================================================ */
 .secao-curso {
     padding: 28px 20px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: hidden;
 }
 
-.secao-curso.oculto {
-    display: none;
-}
+.secao-curso.oculto { display: none; }
 
-.curso-header {
-    margin-bottom: 20px;
-}
+.curso-header { margin-bottom: 20px; }
 
 .curso-header h1 {
     margin: 0;
     font-size: 1.4rem;
-    color: #e6edf3;
+    color: var(--title);
     font-weight: 600;
+    text-align: center;
 }
 
 /* ============================================================
-   GRADE DE SEMESTRES
+   GRADE
 ============================================================ */
 .grade-container {
     display: flex;
     gap: 12px;
     overflow-x: auto;
     padding-bottom: 24px;
+    width: 80%;
+    margin: 0 auto;
     scrollbar-width: thin;
-    scrollbar-color: #30363d #0d1117;
+    scrollbar-color: var(--scrollbar) var(--bg);
 }
 
 .grade-container::-webkit-scrollbar { height: 5px; }
-.grade-container::-webkit-scrollbar-track { background: #0d1117; }
-.grade-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+.grade-container::-webkit-scrollbar-track { background: var(--bg); }
+.grade-container::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 4px; }
 
 .semestre {
-    width: 230px;          /* largura fixa 260 */
+    width: 230px;
     min-width: 200px;
     max-width: 260px;
-    background-color: #161b22;
-    border: 1px solid #21262d;
+    background-color: var(--bg2);
+    border: 1px solid var(--border);
     border-radius: 10px;
     padding: 12px;
     flex-shrink: 0;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 h2 {
-    color: #58a6ff;
+    color: var(--accent);
     font-size: 0.85rem;
     font-weight: 600;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    border-bottom: 1px solid #21262d;
+    border-bottom: 1px solid var(--border);
     margin: 0 0 10px;
     padding-bottom: 8px;
 }
@@ -164,35 +307,33 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;            /* ocupa toda a largura do semestre */
+    width: 100%;
     padding: 7px 10px;
     margin: 5px 0;
     border-radius: 6px;
-    font-size: 0.68rem;     /* tamanho fixo */
+    font-size: 0.68rem;
     font-weight: 600;
     color: #111;
     transition: transform 0.2s, opacity 0.2s, filter 0.2s;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     cursor: default;
 }
 
-/* CORES por área */
-.basicas    { background-color: #e8e8e4; }
-.estrut     { background-color: #eddcd2; }
-.saneamento { background-color: #9fc5dc; }
-.geotec     { background-color: #f5e6c8; }
-.gestamb    { background-color: #b8d8d8; }
-.geoprocess { background-color: #f5c6cb; }
-.transport  { background-color: #c8dce8; }
-.humanas    { background-color: #cfd8d5; }
-.pfestag    { background-color: #f0c8da; }
-.engmat     { background-color: #b8b0ae; }
-.extensao   { background-color: #7de8f0; }
+.basicas    { background-color: var(--basicas); }
+.estrut     { background-color: var(--estrut); }
+.saneamento { background-color: var(--saneamento); }
+.geotec     { background-color: var(--geotec); }
+.gestamb    { background-color: var(--gestamb); }
+.geoprocess { background-color: var(--geoprocess); }
+.transport  { background-color: var(--transport); }
+.humanas    { background-color: var(--humanas); }
+.pfestag    { background-color: var(--pfestag); }
+.engmat     { background-color: var(--engmat); }
+.extensao   { background-color: var(--extensao); }
 
-/* estados */
 .concluida {
-    opacity: 0.6 !important;
-    filter: grayscale(0.6);
+    opacity: 0.55 !important;
+    filter: grayscale(0.5);
     text-decoration: line-through;
     transform: scale(0.96);
 }
@@ -209,24 +350,30 @@ input[type="checkbox"] {
     flex-shrink: 0;
     margin-left: 8px;
     cursor: pointer;
-    accent-color: #58a6ff;
+    accent-color: #2563eb;
 }
 
 /* ============================================================
    OPTATIVAS
 ============================================================ */
+#optativas-ambiental,
+#optativas-civil {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .optativas-header {
     margin-top: 24px;
     margin-bottom: 8px;
 }
 
 .optativas-titulo {
-    color: #58a6ff;
+    color: var(--accent);
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    border-bottom: 1px solid #21262d;
+    border-bottom: 1px solid var(--border);
     margin: 0 0 8px;
     padding-bottom: 8px;
     text-align: left;
@@ -234,52 +381,63 @@ input[type="checkbox"] {
 
 .optativas-container {
     width: 100%;
-    background-color: #161b22;
-    border: 1px solid #21262d;
+    background-color: var(--bg2);
+    border: 1px solid var(--border);
     border-radius: 10px;
     padding: 12px;
     display: grid;
-    grid-template-columns: calc(50% - 8px) calc(50% - 8px); /* duas colunas exatas */
+    grid-template-columns: calc(50% - 8px) calc(50% - 8px);
     gap: 0 16px;
     align-content: start;
     max-height: 380px;
     overflow-y: auto;
-    overflow-x: hidden;   /* sem scroll lateral */
+    overflow-x: hidden;
     scrollbar-width: thin;
-    scrollbar-color: #30363d #0d1117;
+    scrollbar-color: var(--scrollbar) var(--bg);
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .optativas-container::-webkit-scrollbar { width: 5px; }
-.optativas-container::-webkit-scrollbar-track { background: #0d1117; }
-.optativas-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+.optativas-container::-webkit-scrollbar-track { background: var(--bg); }
+.optativas-container::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 4px; }
 
-/* matérias dentro das optativas respeitam a coluna */
 .optativas-container .materia {
     width: 100%;
     min-width: 0;
 }
 
+.oculto-opt { display: none; }
+
+.opt-seta {
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
 /* ============================================================
-   CONTADOR DE HORAS
+   CONTADOR
 ============================================================ */
 .contador {
     display: flex;
     gap: 24px;
     margin-bottom: 24px;
     flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contador-bloco {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    flex: 1;
+    flex: 0 1 280px;
     min-width: 160px;
     max-width: 320px;
 }
 
 .contador-label {
-    color: #8b949e;
+    color: var(--text-muted);
     font-weight: 600;
     font-size: 0.72rem;
     text-transform: uppercase;
@@ -287,7 +445,7 @@ input[type="checkbox"] {
 }
 
 .barra-fundo {
-    background-color: #21262d;
+    background-color: var(--border2);
     border-radius: 6px;
     height: 8px;
     overflow: hidden;
@@ -296,38 +454,29 @@ input[type="checkbox"] {
 .barra-preenchida {
     height: 100%;
     border-radius: 6px;
-    background-color: #58a6ff;
+    background-color: var(--accent);
     width: 0%;
     transition: width 0.4s ease;
 }
 
 .contador-info {
     font-size: 0.72rem;
-    color: #8b949e;
+    color: var(--text-muted);
     font-variant-numeric: tabular-nums;
-}
-
-/* ── toggle de optativas ── */
-.oculto-opt {
-    display: none;
-}
-
-.opt-seta {
-    font-size: 0.7rem;
-    opacity: 0.6;
 }
 
 /* ============================================================
    MOBILE
 ============================================================ */
 @media (max-width: 600px) {
-    body {
-        padding-top: 110px; /* topbar pode ter 2 linhas no mobile */
-    }
+    body { padding-top: 120px; }
 
-    .secao-curso {
-        padding: 20px 12px 40px;
-    }
+    .secao-curso { padding: 20px 12px 40px; }
+
+    .grade-container,
+    #optativas-ambiental,
+    #optativas-civil,
+    .contador { width: 100%; }
 
     .semestre {
         width: 180px;
@@ -340,4 +489,7 @@ input[type="checkbox"] {
         gap: 0 12px;
         padding: 10px;
     }
+
+    #topbar-controls { gap: 8px; }
+    .toggle-btn { min-width: 80px; padding: 6px 12px; }
 }
